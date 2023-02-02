@@ -1,8 +1,10 @@
 <script>
  //   import {onMount, onDestroy} from 'svelte';
     export let title="";
+    export let location;
     import defaultProducts from '../../stores/defaultProducts';
     import Product from './Product.svelte';
+    import Loading from '../Loading.svelte';
     
     /* 
     // Initial code to explain functionality of the store with subscribe and unsubscribe
@@ -32,6 +34,8 @@
         {#each $defaultProducts as product (product.id)}
         <!--<h2>{product.title}</h2>-->
             <Product {product} />
+        {:else}
+            <Loading />
         {/each} 
     </div>
 </section>
