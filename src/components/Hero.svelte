@@ -4,6 +4,6 @@
         <p>Embrace your choices</p>
         <slot>
             <!-- optional fallback-->
-        </slot>>
+        </slot>
     </div>
 </div>

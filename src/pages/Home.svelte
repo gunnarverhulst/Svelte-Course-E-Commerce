@@ -1,9 +1,11 @@
 <script>
     import Hero from '../components/Hero.svelte';
-    import {Link} from 'svelte-routing';
+    import {link} from 'svelte-routing';
 
     //featured products
 
 </script>
 
-<Hero />
+<Hero>
+    <a href='/products' class='btn btn-primary btn-hero' use:link>Shop now</a>
+</Hero>
