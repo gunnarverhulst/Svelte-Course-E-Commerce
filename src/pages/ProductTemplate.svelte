@@ -9,6 +9,9 @@
 
     $: product = $products.find(item => item.id === parseInt(productid));
 </script>
+<svelte:head>
+    <title>{!product ? 'signle product' : product.title}</title>
+</svelte:head>
 
 {#if !product}
     <Loading />
