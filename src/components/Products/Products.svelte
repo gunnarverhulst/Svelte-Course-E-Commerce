@@ -1,7 +1,6 @@
 <script>
  //   import {onMount, onDestroy} from 'svelte';
     export let title="";
-    export let location;
     import defaultProducts from '../../stores/defaultProducts';
     import Product from './Product.svelte';
     import Loading from '../Loading.svelte';

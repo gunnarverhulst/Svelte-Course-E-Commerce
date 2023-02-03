@@ -1,6 +1,5 @@
 <script>
     export let productid;
-    export let location;
 
     //global store
 
