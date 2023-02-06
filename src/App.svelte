@@ -12,6 +12,7 @@
 	// Components
 	import Navbar from './components/Navbar/Navbar.svelte';
 	import Sidebar from './components/Navbar/Sidebar.svelte';
+	import Cart from './components/Cart/Cart.svelte';
 
 	// global store
 	import globalStore from './stores/globalStore';
@@ -22,6 +23,9 @@
 	<Navbar />
 	{#if $globalStore.sidebar}
 		<Sidebar />
+	{/if}
+	{#if $globalStore.cart}
+		<Cart />
 	{/if}
 	
 	<!-- Old version which is updated with above import of Navbar-->
