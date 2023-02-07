@@ -9,6 +9,7 @@ const store = writable([], () => {
 
 async function setProducts(){
     let products = await getProducts();
+
     if(products) {
         products = flattenProducts(products);
         store.set(products);
@@ -21,7 +22,11 @@ async function setProducts(){
 
 // flatten products
 function flattenProducts(data){
+    console.log(data);
     return data.map(item => {
+        
+    
+
         //let image = item.image.url;
         let image = `${url}/${item.image.url}`;
         return { ...item, image };
@@ -32,3 +37,5 @@ function flattenProducts(data){
 export const featuredStore = derived(store, $featured => {
     return $featured.filter(item => item.featured === true);
 });
+
+export default store;

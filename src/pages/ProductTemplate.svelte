@@ -4,7 +4,7 @@
     //global store
     import globalStore from '../stores/globalStore';
 
-    import products from '../stores/defaultProducts';
+    import products from '../stores/products';
     import Loading from '../components/Loading.svelte';
     import {link} from 'svelte-routing';
     import {addToCart} from '../stores/cart';
@@ -12,7 +12,7 @@
     $: product = $products.find(item => item.id === parseInt(productid));
 </script>
 <svelte:head>
-    <title>{!product ? 'signle product' : product.title}</title>
+    <title>{!product ? 'single product' : product.title}</title>
 </svelte:head>
 
 {#if !product}

@@ -1,7 +1,8 @@
 <script>
  //   import {onMount, onDestroy} from 'svelte';
     export let title="";
-    import defaultProducts from '../../stores/defaultProducts';
+    //import defaultProducts from '../../stores/defaultProducts';
+    import Products from '../../stores/products';
     import Product from './Product.svelte';
     import Loading from '../Loading.svelte';
     
@@ -30,7 +31,7 @@
         <!-- {#each localProducts as product}-->
         <!-- as described earlier, $products will subscribe and unsubscribe automatically and replaces the whole code block from earlier-->
         <!-- it will always look for the latest data via subscribe when products is entered and unsubscribe when left-->
-        {#each $defaultProducts as product (product.id)}
+        {#each $Products as product (product.id)}
         <!--<h2>{product.title}</h2>-->
             <Product {product} />
         {:else}
