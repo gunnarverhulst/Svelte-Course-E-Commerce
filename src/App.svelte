@@ -1,8 +1,9 @@
 <script>
 	// pages
-	import Home from './pages/Home.svelte'
-	import Login from './pages/Login.svelte'
-	import Products from './pages/Products.svelte'
+	import Home from './pages/Home.svelte';
+	import Login from './pages/Login.svelte';
+	import Checkout from './pages/Checkout.svelte';
+	import Products from './pages/Products.svelte';
 	import ProductTemplate from './pages/ProductTemplate.svelte';
 	import About from './pages/About.svelte';
 
@@ -14,6 +15,9 @@
 	import Sidebar from './components/Navbar/Sidebar.svelte';
 	import Cart from './components/Cart/Cart.svelte';
 
+	// alert
+	import Alert from './components/Alert.svelte';
+
 	// global store
 	import globalStore from './stores/globalStore';
 	
@@ -24,8 +28,13 @@
 	{#if $globalStore.sidebar}
 		<Sidebar />
 	{/if}
+
 	{#if $globalStore.cart}
 		<Cart />
+	{/if}
+
+	{#if $globalStore.alert}
+		<Alert />
 	{/if}
 	
 	<!-- Old version which is updated with above import of Navbar-->
@@ -37,6 +46,7 @@
 	<Route path='/' component={Home} />
 	<Route path='/about' component={About} />
 	<Route path='/login' component={Login} />
+	<Route path='/Checkout' component={Checkout} />
 	<Route path='/products' component={Products} />
 	<Route path='/products/:productid' component={ProductTemplate} />
 </Router>

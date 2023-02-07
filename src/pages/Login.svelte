@@ -1,18 +1,58 @@
-    <script >
+<script >
+    import loginUser from '../strapi/loginUser';
+    import registerUser from '../strapi/registerUser';
+    import {navigate} from 'svelte-routing';
+    import globalStore from '../stores/globalStore';
 
     let email = '';
     let password = '';
     let username = 'default username';
     let isMember = true;
 
-    $: isEmpty = !email || !password || !username;
-
+    // add alert
+    $: isEmpty = !email || !password || !username || $globalStore.alert;
+    // toggle member
     function toggleMember(){
-
+        isMember = !isMember;
+        if(!isMember){
+            username = ''; 
+        } else {
+            username = 'default username';
+        }
     }
 
-    async function handleSUbmit(){
+    // handle submit
+    async function handleSubmit(){
+        // add alert
+        globalStore.toggleItem(
+            'alert', 
+            true, 
+            'Loading data... Please wait'
+        );
+        let user;
+        if(isMember){
+            user = await loginUser(email, password);
+        } else {
+            user = await registerUser({email, password, username});
+        }
 
+        if(user){
+            navigate('/products');
+            globalStore.toggleItem(
+                'alert', 
+                true, 
+                'Welcome to the store'
+            );
+            // add alert
+            return;
+        }
+        // add alert
+        globalStore.toggleItem(
+            'alert', 
+            true, 
+            'There was an error! Please try again', 
+            true
+        );
     }
 </script>
 
@@ -23,7 +63,7 @@
         {:else} register 
         {/if}   
     </h2>
-    <form class='login-form' on:submit|preventDefault={handleSUbmit}>
+    <form class='login-form' on:submit|preventDefault={handleSubmit}>
         <!--  single input -->
         <div class="form-control">
             <label for='email'>email</label>

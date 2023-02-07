@@ -19,11 +19,11 @@ export function setStorageCart(cartValues){
 const cart = writable(getStorageCard());
 
 // cart total
-export const cartTotal = derived(cart, ($cart) => {
+export const cartTotal = derived(cart, $cart => {
     let total = $cart.reduce((acc,curr) => {
         return (acc += curr.amount*curr.price);
     }, 0);
-    return total.toFixed(2);
+    return parseFloat(total.toFixed(2));
 });
 
 
