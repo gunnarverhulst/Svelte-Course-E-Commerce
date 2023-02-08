@@ -3,10 +3,13 @@ import url from './URL';
 import setupUser from "./setupUser";
 
 async function loginUser({email, password}){
-    const response = await axios.post(`${url}/auth/local`,{
-        identifier:email, 
-        password
-    }).catch(error => console.log(error));
+    let em='verhulstg@gmail.com';
+    let username = 'Gunz';
+    let pw = 'Nuke2k'
+    const response = await axios.post(`${url}/api/auth/local`, {
+        identifier: username,
+        password: pw}
+    ).catch(error => console.log(error));
 
     if(response) {
         setupUser(response);

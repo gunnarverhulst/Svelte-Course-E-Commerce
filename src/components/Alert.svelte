@@ -10,7 +10,7 @@
     };
 
     onMount(() => {
-        timeout = setTimeout(() => {
+        const timeout = setTimeout(() => {
             globalStore.toggleItem('alert', false);
         }, 3000);
     });
