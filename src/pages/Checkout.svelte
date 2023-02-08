@@ -24,7 +24,7 @@
         } 
 
         if($cartTotal > 0) {
-            stripe = stripe('ADMIN_API_KEY');
+            stripe = Stripe('pk_test_51MZJbVEfAVGiIMFW1gwcRQxUjG7WgaxPC2M57zaJ7MltQxgAybaFYJ29BtoTQ0ZLdvJfDxSvPo3k8mMM4ic6QJqb00zcGukcB3');
             elements = stripe.elements();
             card = elements.create('card');
             card.mount(cardElement);
@@ -43,19 +43,20 @@
         globalStore.toggleItem('alert', true, 'submitting order ... Please wait!');
 
         // stripe get token 
-        let response = await stripe.creatToken(card).catch(error => console.log(error));
+        let response = await stripe.createToken(card).catch(error => console.log(error));
 
         const { token } = response;
+
         if(token){
             // token id
             const { id } = token;
-
+            
             // submit the order
             let order = await submitOrder({
-                name, 
+                name:name, 
                 total:$cartTotal, 
                 items:$cart, 
-                stripeTokenID:id, 
+                stripeTokenId:id, 
                 userToken:$user.jwt
             });
 
