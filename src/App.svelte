@@ -46,7 +46,7 @@
 	<Route path='/' component={Home} />
 	<Route path='/about' component={About} />
 	<Route path='/login' component={Login} />
-	<Route path='/Checkout' component={Checkout} />
+	<Route path='/checkout' component={Checkout} />
 	<Route path='/products' component={Products} />
 	<Route path='/products/:productid' component={ProductTemplate} />
 </Router>

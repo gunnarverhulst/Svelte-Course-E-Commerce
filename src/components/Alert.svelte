@@ -5,12 +5,14 @@
     import { subscribe } from 'svelte/internal';
 
 
+    let timeout;
+
     const handleClose = () => {
         globalStore.toggleItem('alert', false);
     };
 
     onMount(() => {
-        const timeout = setTimeout(() => {
+        timeout = setTimeout(() => {
             globalStore.toggleItem('alert', false);
         }, 3000);
     });
