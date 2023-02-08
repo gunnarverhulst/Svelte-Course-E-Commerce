@@ -22,15 +22,16 @@ async function setProducts(){
 
 // flatten products
 function flattenProducts(data){
-    console.log(data);
-    return data.map(item => {
-        
-    
 
-        //let image = item.image.url;
-        let image = `${url}/${item.image.url}`;
-        return { ...item, image };
-    });
+    return data.data.map(product =>{
+        let title = product.attributes.Title;
+        let price = product.attributes.Price;
+        let id = product.id;
+        let description = product.attributes.Description;
+        let featured = product.attributes.Featured;
+        let image = `${url}${product.attributes.Image.data.attributes.url}`;
+        return { ...product, title, price, id, description, featured, image};
+    })
 }
 
 // featured store

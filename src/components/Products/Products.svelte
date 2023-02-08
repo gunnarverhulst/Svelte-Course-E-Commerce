@@ -1,28 +1,10 @@
 <script>
- //   import {onMount, onDestroy} from 'svelte';
     export let title="";
-    //import defaultProducts from '../../stores/defaultProducts';
     import Products from '../../stores/products';
     import Product from './Product.svelte';
     import Loading from '../Loading.svelte';
     
-    /* 
-    // Initial code to explain functionality of the store with subscribe and unsubscribe
-    // This functionality can be replaced by using $products which will be used in the eachloop below
-    
-    let localProducts = [];
-    let unsubscribe;
-    
-    onMount(() => {
-        unsubscribe = products.subscribe(storeValue => {
-            console.log('subscribed');
-            localProducts = storeValue;
-        });
-    });
 
-    onDestroy(() =>{
-        unsubscribe();
-    })*/
 </script>
 
 <section class='section'>
